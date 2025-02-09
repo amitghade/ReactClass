@@ -1,26 +1,47 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-const heading1 = React.createElement(
-  "h1",
-  { id: "title", className: "heading", key: "e1" },
-  "Heading-1"
-);
-const heading2 = React.createElement(
-  "h1",
-  { id: "title", className: "heading", key: "e2" },
-  "Heading-2"
+//JSX
+//Parcel ------ babel -------- React create element ------ object ------- html element
+
+
+const titleStyle = { color: "red", backgroundColor: "pink" };
+const Title = () => (
+  <h1 id="heading" className="title" style={titleStyle}>
+    Title from JSX
+  </h1>
 );
 
-const container = React.createElement(
-  "div",
-  {
-    className: "container",
-    style: { fontSize: "30px", padding: "20px" },
-  },
-  [heading1, heading2]
-);
+//Components
+// Class based components
+// Functional Based components
+
+const val = 3434;
+
+const HeadingComponent = () => {
+  return (
+    <div id="container">
+      <Title />
+      <Title></Title>
+      {Title()}
+      <h1 id="headcomp" className="head">
+        Heading component
+      </h1>
+
+      <h2> {78 * 3 + 5}</h2>
+    </div>
+  );
+};
+
+const Application = () => {
+  return (
+    <div>
+      <h1>Application Component</h1>
+      <HeadingComponent />
+    </div>
+  );
+};
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(container);
+root.render(<Application />);
