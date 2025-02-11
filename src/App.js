@@ -1,0 +1,22 @@
+import React from "react";
+import ReactDOM from "react-dom/client";
+import HeadingComponent from "./components/HeadingComponent";
+import RestaurantContainer from "./components/RestaurantContainer";
+
+
+
+
+
+const Application = () => {
+  return (
+    <div>
+      <h1>Application Component</h1>
+      <HeadingComponent />
+      <RestaurantContainer />
+    </div>
+  );
+};
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+root.render(<Application />);
