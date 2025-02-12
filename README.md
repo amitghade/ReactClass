@@ -49,3 +49,8 @@ Create seperate components
 File extension in imports is optional
 Never keep hard coded data or hard coded string in component file
 Two types of exports default and named.
+React Hooks are normal JS utility functions
+useState() ---create powerful state variables
+State variable maintaines the state of your component
+whenever state variable changes React re-renders the component
+useEffect()

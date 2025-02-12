@@ -1,11 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import HeadingComponent from "./components/HeadingComponent";
+import HeadingComponent from "./components/HeadingComponent.js";
 import RestaurantContainer from "./components/RestaurantContainer";
-
-
-
-
 
 const Application = () => {
   return (
