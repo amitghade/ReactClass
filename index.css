@@ -46,10 +46,23 @@
   border-color: #007bff;
 }
 
+.search-button {
+  padding: 8px 12px;
+  background: black;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.search-button:hover {
+  background: gray;
+}
+
 /* Navigation Links */
 .nav-links {
   display: flex;
   gap: 20px;
+  align-items: center;
 }
 
 .nav-links a {
@@ -129,6 +142,9 @@
 
 .filter {
   margin: 20px 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 /* give clickable effect on the button */
 .filter-button {

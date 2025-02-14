@@ -12,10 +12,7 @@ const HeadingComponent = () => {
         <img src={logo} alt="Swiggy Logo" />
       </div>
 
-      {/* Search Bar */}
-      <div className="search-container">
-        <input type="text" placeholder="Search..." className="search-input" />
-      </div>
+     
 
       {/* Navigation Links */}
       <nav className="nav-links">
