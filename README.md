@@ -50,7 +50,18 @@ File extension in imports is optional
 Never keep hard coded data or hard coded string in component file
 Two types of exports default and named.
 React Hooks are normal JS utility functions
+
+14/2/25
 useState() ---create powerful state variables
 State variable maintaines the state of your component
 whenever state variable changes React re-renders the component
 useEffect()
+it takes two arguments 1. a callback function 2. Dependencies
+the callback function in useEffect runs after the component is rendered
+React if fast at manupulating DOM
+Reconciliation algorithm(React fiber)
+Diffing algorithm
+
+conditional rendering
+conditional rendering using ternary operator
+login logout useState

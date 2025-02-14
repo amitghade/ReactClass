@@ -4,9 +4,10 @@ import HeadingComponent from "./components/HeadingComponent.js";
 import RestaurantContainer from "./components/RestaurantContainer";
 
 const Application = () => {
+  console.log(<HeadingComponent />);
   return (
     <div>
-      <h1>Application Component</h1>
+      {/* <h1>Application Component</h1> */}
       <HeadingComponent />
       <RestaurantContainer />
     </div>
