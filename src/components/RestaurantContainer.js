@@ -5,9 +5,12 @@ import Shimmer from "./Shimmer";
 
 const RestaurantContainer = () => {
   const [restaurantList, setRestaurantList] = useState([]);
+  const [searchText, setSearchText] = useState("");
+  const [filteredResList, setFilteredResList] = useState([]);
+  // console.log("RestaurantContainer component rendered");
 
   useEffect(() => {
-    console.log("useEffect is active");
+    // console.log("useEffect is active");
     fetchData();
   }, []);
 
@@ -18,6 +21,9 @@ const RestaurantContainer = () => {
     const json = await data.json();
     console.log(json);
     setRestaurantList(
+      json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
+    );
+    setFilteredResList(
       json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
     );
   };
@@ -34,10 +40,10 @@ const RestaurantContainer = () => {
         <button
           onClick={() => {
             console.log("Button active");
-            filteredList = restaurantList.filter((res) => {
+            let filteredList = restaurantList.filter((res) => {
               return res.info.avgRating > 4.5;
             });
-            setRestaurantList(filteredList);
+            setFilteredResList(filteredList);
           }}
           className="filter-button"
         >
@@ -45,12 +51,36 @@ const RestaurantContainer = () => {
         </button>
         {/* Search Bar */}
         <div className="search-container">
-          <input type="text" placeholder="Search..." className="search-input" />
+          <input
+            type="text"
+            placeholder="Search..."
+            className="search-input"
+            value={searchText}
+            onChange={(e) => {
+              console.log(e);
+              setSearchText(e.target.value);
+            }}
+          />
         </div>
-        <button className="search-button">Search</button>
+        <button
+          className="search-button"
+          onClick={() => {
+            //Filter restaurants based on search text
+            console.log(searchText);
+            let filteredRestaurants = restaurantList.filter((res) => {
+              console.log(res);
+              return res.info.name
+                .toLowerCase()
+                .includes(searchText.toLowerCase().trim());
+            });
+            setFilteredResList(filteredRestaurants);
+          }}
+        >
+          Search
+        </button>
       </div>
       <div className="restaurant-container">
-        {restaurantList.map((restaurant, index) => {
+        {filteredResList.map((restaurant, index) => {
           return <RestaurantCard key={index} resData={restaurant} />;
         })}
       </div>

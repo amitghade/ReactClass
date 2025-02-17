@@ -1,10 +1,14 @@
 import logo from "../images/swiggy.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const HeadingComponent = () => {
   // let btnLabel = "Login";
   const [btnLabel, setBtnLabel] = useState("Login");
   console.log("HeadingComponent rendered");
+
+  useEffect(() => {
+    console.log("useEffect of Heading Component called");
+  }, [btnLabel]);
   return (
     <header className="header">
       {/* Logo */}
@@ -12,14 +16,12 @@ const HeadingComponent = () => {
         <img src={logo} alt="Swiggy Logo" />
       </div>
 
-     
-
       {/* Navigation Links */}
       <nav className="nav-links">
         <a href="#">Home</a>
         <a href="#">About</a>
         <a href="#">Contact</a>
-        <a href="#">Sign In</a>
+        <a href="#">Cart</a>
         <button
           onClick={() => {
             // setBtnLabel("Logout");

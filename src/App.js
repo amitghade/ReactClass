@@ -7,7 +7,6 @@ const Application = () => {
   console.log(<HeadingComponent />);
   return (
     <div>
-      {/* <h1>Application Component</h1> */}
       <HeadingComponent />
       <RestaurantContainer />
     </div>

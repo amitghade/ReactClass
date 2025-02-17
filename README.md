@@ -65,3 +65,6 @@ Diffing algorithm
 conditional rendering
 conditional rendering using ternary operator
 login logout useState
+
+17/02/2025
+Filter restaurants based on search
