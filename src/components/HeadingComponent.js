@@ -1,14 +1,15 @@
 import logo from "../images/swiggy.svg";
 import { useEffect, useState } from "react";
+import { Link } from "react-router";
 
 const HeadingComponent = () => {
   // let btnLabel = "Login";
   const [btnLabel, setBtnLabel] = useState("Login");
   console.log("HeadingComponent rendered");
 
-  useEffect(() => {
-    console.log("useEffect of Heading Component called");
-  }, [btnLabel]);
+  // useEffect(() => {
+  //   console.log("useEffect of Heading Component called");
+  // }, [btnLabel]);
   return (
     <header className="header">
       {/* Logo */}
@@ -18,9 +19,9 @@ const HeadingComponent = () => {
 
       {/* Navigation Links */}
       <nav className="nav-links">
-        <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#">Contact</a>
+        <Link to="/">Home</Link>
+        <Link to="/about">About</Link>
+        <Link to="/contact">Contact</Link>
         <a href="#">Cart</a>
         <button
           onClick={() => {

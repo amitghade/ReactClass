@@ -67,22 +67,32 @@ const RestaurantContainer = () => {
           onClick={() => {
             //Filter restaurants based on search text
             console.log(searchText);
-            let filteredRestaurants = restaurantList.filter((res) => {
-              console.log(res);
-              return res.info.name
-                .toLowerCase()
-                .includes(searchText.toLowerCase().trim());
-            });
-            setFilteredResList(filteredRestaurants);
+            if (searchText.trim() === "") {
+              // If search text is empty, show all restaurants
+              setFilteredResList(restaurantList);
+            } else {
+              let filteredRestaurants = restaurantList.filter((res) => {
+                console.log(res);
+                return res.info.name
+                  .toLowerCase()
+                  .includes(searchText.toLowerCase().trim());
+              });
+
+              setFilteredResList(filteredRestaurants);
+            }
           }}
         >
           Search
         </button>
       </div>
       <div className="restaurant-container">
-        {filteredResList.map((restaurant, index) => {
-          return <RestaurantCard key={index} resData={restaurant} />;
-        })}
+        {filteredResList.length === 0 ? (
+          <h1>No Restaurants Found</h1>
+        ) : (
+          filteredResList.map((restaurant, index) => {
+            return <RestaurantCard key={index} resData={restaurant} />;
+          })
+        )}
       </div>
     </div>
   );

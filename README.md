@@ -68,3 +68,60 @@ login logout useState
 
 17/02/2025
 Filter restaurants based on search
+
+18/02/2025
+Create Routes.
+Routing will be done in root component
+Install npm i react-router
+import createBrowserRouter
+create configuration
+Provide configuration by <RouterProvider router={nameOfRouterConfig}/>
+const appRouter = createBrowserRouter([
+{
+path: "/",
+element: <Application />,
+errorElement: <Error />,
+},
+{
+path: "/about",
+element: <About />,
+},
+{
+path: "/contact",
+element: <Contact />,
+},
+]);
+
+Create About, Contact pages
+If other route is provided it will give error which will be handled automatically by react router
+We can create our own Error Conponent and render on random routes
+One more feature is given by react router related to error
+useRouteError() hook to get more info on error(import in Error component)
+-Header should be visible in any case.
+**Childern Routes**
+const appRouter = createBrowserRouter([
+{
+path: "/",
+element: <Application />,
+children: [
+{
+path: "/",
+element: <RestaurantContainer />,
+},
+{
+path: "/about",
+element: <About />,
+},
+{
+path: "/contact",
+element: <Contact />,
+},
+],
+errorElement: <Error />,
+},
+]);
+**Link navigation to routes**
+
+- Never use anchor tags to create routes.
+- Use Link component given by react-router to route
+- Link contains _to_ attribute just like _href_ in anchor tag
