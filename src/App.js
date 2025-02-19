@@ -2,13 +2,14 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import HeadingComponent from "./components/HeadingComponent.js";
 import RestaurantContainer from "./components/RestaurantContainer";
+import RestaurantMenu from "./components/RestaurantMenu.js";
 import About from "./components/About.js";
 import Error from "./components/Error.js";
 import Contact from "./components/Contact.js";
+
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router";
 
 const Application = () => {
-  console.log(<HeadingComponent />);
   return (
     <div>
       <HeadingComponent />
@@ -33,6 +34,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/restaurants/:resId",
+        element: <RestaurantMenu />,
       },
     ],
     errorElement: <Error />,
