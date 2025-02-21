@@ -97,6 +97,7 @@
   flex-direction: column;
   align-items: flex-start;
   width: 280px;
+  height: 380px;
   margin-top: 20px;
   background-color: rgb(225, 221, 221);
   border-radius: 10px;
@@ -167,4 +168,10 @@
 /* Shimmer Card  */
 .shimmerCardHeight {
   height: 300px;
+}
+
+/*  Link styling*/
+.restaurant-link {
+  text-decoration: none;
+  color: inherit; /* Optional: To inherit the text color from the parent */
 }
