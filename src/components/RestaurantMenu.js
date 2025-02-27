@@ -31,7 +31,7 @@ const RestaurantMenu = () => {
   // const { itemCards: itemCards2, title: title2 } =
   //   resInfo.cards[4].groupedCard.cardGroupMap.REGULAR.cards[3].card.card;
 
-  const { cards } = resInfo.cards[4].groupedCard.cardGroupMap.REGULAR;
+  const { cards } = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR;
   console.log(cards);
 
   return (
