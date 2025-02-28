@@ -1,9 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const User = (props) => {
   console.log(props);
   let [count, setCount] = useState(0);
   let [count1, setCount1] = useState(0);
+  useEffect(() => {
+    const timer = setInterval(() => {
+      console.log("Useffect Timer activated ");
+    }, 1000);
+
+    return () => {
+      clearInterval(timer);
+    };
+  }, []);
   const { name, email, designation } = props;
   return (
     <div>

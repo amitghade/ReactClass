@@ -4,10 +4,13 @@ import UserClass from "./UserClass";
 
 class About extends React.Component {
   constructor(props) {
+    console.log("Parent constructor");
     super(props);
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    console.log("Parent component did mount");
+  }
 
   render() {
     console.log("Parent Render");
@@ -20,6 +23,7 @@ class About extends React.Component {
           email={"yash@gmail.com"}
           designation={"Web Developer"}
         />
+        <User />
       </div>
     );
   }
