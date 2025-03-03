@@ -1,11 +1,14 @@
 import logo from "../images/swiggy.svg";
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const HeadingComponent = () => {
   // let btnLabel = "Login";
   const [btnLabel, setBtnLabel] = useState("Login");
   console.log("HeadingComponent rendered");
+
+  let onlineStatus = useOnlineStatus();
 
   // useEffect(() => {
   //   console.log("useEffect of Heading Component called");
@@ -19,6 +22,7 @@ const HeadingComponent = () => {
 
       {/* Navigation Links */}
       <nav className="nav-links">
+        <a>Online status:{onlineStatus ? "✅" : "❌"}</a>
         <Link to="/">Home</Link>
         <Link to="/about">About</Link>
         <Link to="/contact">Contact</Link>

@@ -1,6 +1,8 @@
 import RestaurantCard from "./RestaurantCard";
 import resArr from "../utils/mockData";
 import { useState, useEffect } from "react";
+
+import useOnlineStatus from "../utils/useOnlineStatus";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router";
 
@@ -32,6 +34,11 @@ const RestaurantContainer = () => {
   // if (restaurantList.length === 0) {
   //   return <Shimmer />;
   // }
+
+  let onlineStatus = useOnlineStatus();
+
+  if (onlineStatus === false)
+    return <h1>You have lost your internet connnection</h1>;
 
   return restaurantList.length === 0 ? (
     <Shimmer />
