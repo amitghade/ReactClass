@@ -1,39 +1,23 @@
 import RestaurantCard from "./RestaurantCard";
 import resArr from "../utils/mockData";
 import { useState, useEffect } from "react";
-
+import useRestaurantContainer from "../utils/useRestaurantContainer";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router";
 
 const RestaurantContainer = () => {
-  const [restaurantList, setRestaurantList] = useState([]);
   const [searchText, setSearchText] = useState("");
-  const [filteredResList, setFilteredResList] = useState([]);
+
   // console.log("RestaurantContainer component rendered");
-
-  useEffect(() => {
-    // console.log("useEffect is active");
-    fetchData();
-  }, []);
-
-  const fetchData = async () => {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.0914726&lng=79.069835&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
-    const json = await data.json();
-    // console.log(json);
-    setRestaurantList(
-      json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
-    );
-    setFilteredResList(
-      json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
-    );
-  };
 
   // if (restaurantList.length === 0) {
   //   return <Shimmer />;
   // }
+
+  let data = useRestaurantContainer();
+  const { filteredResList, restaurantList } = data;
+  console.log(data);
 
   let onlineStatus = useOnlineStatus();
 
