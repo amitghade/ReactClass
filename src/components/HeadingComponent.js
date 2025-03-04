@@ -26,6 +26,7 @@ const HeadingComponent = () => {
         <Link to="/">Home</Link>
         <Link to="/about">About</Link>
         <Link to="/contact">Contact</Link>
+        <Link to="/grocery">Grocery</Link>
         <a href="#">Cart</a>
         <button
           onClick={() => {
