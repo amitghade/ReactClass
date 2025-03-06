@@ -4,20 +4,33 @@ import { useState, useEffect } from "react";
 import useRestaurantContainer from "../utils/useRestaurantContainer";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import Shimmer from "./Shimmer";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 
 const RestaurantContainer = () => {
   const [searchText, setSearchText] = useState("");
-
-  // console.log("RestaurantContainer component rendered");
+  const location = useLocation();
+  console.log("Location hook", location);
+  console.log("RestaurantContainer component rendered");
 
   // if (restaurantList.length === 0) {
   //   return <Shimmer />;
   // }
 
   let data = useRestaurantContainer();
-  const { filteredResList, restaurantList } = data;
-  console.log(data);
+
+  console.log("Data = ", data);
+  const { restaurantList, filteredResList, setFilteredResList } = data;
+  console.log(restaurantList);
+
+  useEffect(() => {
+    if (location.pathname === "/") {
+      setFilteredResList(restaurantList);
+    }
+  }, [location.pathname, restaurantList, setFilteredResList, location.key]);
+
+  useEffect(() => {
+    console.log(filteredResList);
+  }, [filteredResList]);
 
   let onlineStatus = useOnlineStatus();
 

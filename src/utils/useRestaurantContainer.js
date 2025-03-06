@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 const useRestaurantContainer = () => {
   const [filteredResList, setFilteredResList] = useState([]);
   const [restaurantList, setRestaurantList] = useState([]);
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -19,7 +20,13 @@ const useRestaurantContainer = () => {
       json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
     );
   };
-  return { filteredResList, restaurantList };
+
+  return {
+    filteredResList,
+    restaurantList,
+    setFilteredResList,
+    setRestaurantList,
+  };
 };
 
 export default useRestaurantContainer;
