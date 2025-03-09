@@ -23,4 +23,19 @@ const RestaurantCard = (props) => {
   );
 };
 
+// Higher Order Component ...
+// Input will be RestaurantCard => Output will be RestaurantCardVeg
+
+export const withVegLabel = (RestaurantCard) => {
+  return (props) => {
+    console.log("HOC prop", props);
+    return (
+      <div>
+        <label>Veg</label>
+        <RestaurantCard {...props} />
+      </div>
+    );
+  };
+};
+
 export default RestaurantCard;

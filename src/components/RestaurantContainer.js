@@ -1,4 +1,4 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withVegLabel } from "./RestaurantCard";
 import resArr from "../utils/mockData";
 import { useState, useEffect } from "react";
 import useRestaurantContainer from "../utils/useRestaurantContainer";
@@ -16,6 +16,8 @@ const RestaurantContainer = () => {
   //   return <Shimmer />;
   // }
 
+  const RestaurantCardVeg = withVegLabel(RestaurantCard);
+
   let data = useRestaurantContainer();
 
   console.log("Data = ", data);
@@ -26,7 +28,7 @@ const RestaurantContainer = () => {
     if (location.pathname === "/") {
       setFilteredResList(restaurantList);
     }
-  }, [location.pathname, restaurantList, setFilteredResList, location.key]);
+  }, [location.pathname, restaurantList, setFilteredResList]);
 
   useEffect(() => {
     console.log(filteredResList);
@@ -101,7 +103,12 @@ const RestaurantContainer = () => {
                 to={"/restaurants/" + restaurant.info.id}
                 key={restaurant.info.id}
               >
-                <RestaurantCard resData={restaurant} />
+                {restaurant.info.veg ? (
+                  <RestaurantCardVeg resData={restaurant} />
+                ) : (
+                  <RestaurantCard resData={restaurant} />
+                )}
+                {/* <RestaurantCard resData={restaurant} /> */}
               </Link>
             );
           })
