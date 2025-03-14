@@ -28,7 +28,7 @@ const RestaurantContainer = () => {
     if (location.pathname === "/") {
       setFilteredResList(restaurantList);
     }
-  }, [location.pathname, restaurantList, setFilteredResList]);
+  }, [location.pathname, restaurantList, location.key, setFilteredResList]);
 
   useEffect(() => {
     console.log(filteredResList);

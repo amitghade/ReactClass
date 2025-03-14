@@ -2,6 +2,7 @@ import { useParams } from "react-router";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 import Shimmer from "./Shimmer";
 import "./RestaurantMenu.css";
+import RestaurantCategory from "./RestaurantCategory";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
@@ -19,8 +20,9 @@ const RestaurantMenu = () => {
   // const { itemCards: itemCards2, title: title2 } =
   //   resInfo.cards[4].groupedCard.cardGroupMap.REGULAR.cards[3].card.card;
 
-  const { cards } = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR;
-  console.log(cards);
+  // const { cards } = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR;
+  const categories = resInfo.cards[4].groupedCard.cardGroupMap.REGULAR.cards;
+  console.log("Categories", categories);
 
   return (
     <div className="restaurant-menu">
@@ -31,30 +33,17 @@ const RestaurantMenu = () => {
         </h2>
         <h3>{cuisines.join(", ")}</h3>
       </div>
-      {cards.map((card, index) => {
-        if (card.card.card.itemCards) {
-          const { itemCards, title } = card.card.card;
-          return (
-            <div key={index} className="menu-section">
-              <h3>{title}</h3>
-              <div className="menu-items">
-                {itemCards.map((item) => (
-                  <div key={item.card.info.id} className="menu-item">
-                    <h4>{item.card.info.name}</h4>
-                    <p>{item.card.info.description}</p>
-                    <p className="price">
-                      ₹
-                      {item.card.info.price / 100 ||
-                        item.card.info.defaultPrice / 100}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          );
-        }
-        return null;
-      })}
+
+      <div>
+        {categories.map((category) => {
+          if (
+            category.card.card["@type"] ==
+            "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+          ) {
+            return <RestaurantCategory data={category.card.card} />;
+          }
+        })}
+      </div>
     </div>
   );
 };

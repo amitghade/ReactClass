@@ -30,8 +30,10 @@ export const withVegLabel = (RestaurantCard) => {
   return (props) => {
     console.log("HOC prop", props);
     return (
-      <div>
-        <label>Veg</label>
+      <div className="group">
+        <label className="bg-black text-white p-2 absolute w-12 z-10 group-hover:translate-y-[-4px] rounded transition-all">
+          Veg
+        </label>
         <RestaurantCard {...props} />
       </div>
     );
