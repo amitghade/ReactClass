@@ -28,13 +28,13 @@ const ItemList = ({ items }) => {
                   {item.card.info.description}
                 </p>
               </div>
-              <div className="w-3/12 relative ">
+              <div className="w-3/12 h-32 relative">
                 <img
-                  className="w-32 h-32 object-cover "
+                  className="w-40 h-32 object-cover "
                   src={MENU_ITEM_URL + item.card.info.imageId}
                   alt={item.card.info.name}
                 />
-                <button className="bg-green-600 text-white p-1 rounded absolute bottom-10 left-6 w-20 font-bold">
+                <button className="bg-green-600 text-white p-1 rounded absolute bottom-3 left-10 w-20 font-bold">
                   ADD+
                 </button>
               </div>
