@@ -13,7 +13,7 @@ const RestaurantCategory = ({ data }) => {
     <div>
       <div className="flex justify-center mt-4">
         {/* Accordian Header */}
-        <div className="bg-amber-200 w-7/12  p-2 cursor-pointer">
+        <div className="bg-gray-200 w-7/12  p-2 cursor-pointer shadow-lg">
           <div onClick={handleClick} className="flex justify-between">
             <div>
               <span className="font-bold">

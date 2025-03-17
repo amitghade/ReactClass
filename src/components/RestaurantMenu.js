@@ -40,7 +40,12 @@ const RestaurantMenu = () => {
             category.card.card["@type"] ==
             "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
           ) {
-            return <RestaurantCategory data={category.card.card} />;
+            return (
+              <RestaurantCategory
+                key={category.card.card.title}
+                data={category.card.card}
+              />
+            );
           }
         })}
       </div>
