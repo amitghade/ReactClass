@@ -1,7 +1,10 @@
 import logo from "../images/swiggy.svg";
-import { useEffect, useState } from "react";
-import { Link } from "react-router";
+import { useEffect, useState, useContext } from "react";
+import { Link, useLocation } from "react-router";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import { useNavigate } from "react-router";
+
+import { UserContext } from "../utils/UserContext";
 
 const HeadingComponent = () => {
   // let btnLabel = "Login";
@@ -9,6 +12,19 @@ const HeadingComponent = () => {
   console.log("HeadingComponent rendered");
 
   let onlineStatus = useOnlineStatus();
+  const location = useLocation();
+
+  const navigate = useNavigate();
+
+  const { loggedInUser, setLoggedInUser } = useContext(UserContext);
+
+  const handleLoginBtn = () => {
+    if (loggedInUser) {
+      setLoggedInUser("");
+    } else {
+      navigate("/login");
+    }
+  };
 
   // useEffect(() => {
   //   console.log("useEffect of Heading Component called");
@@ -28,14 +44,11 @@ const HeadingComponent = () => {
         <Link to="/contact">Contact</Link>
         <Link to="/grocery">Grocery</Link>
         <a href="#">Cart</a>
-        <button
-          onClick={() => {
-            // setBtnLabel("Logout");
-            btnLabel === "Login" ? setBtnLabel("Logout") : setBtnLabel("Login");
-          }}
-        >
-          {btnLabel}
+        <button onClick={handleLoginBtn}>
+          {loggedInUser ? "Logout" : "Login"}
         </button>
+        {location.pathname === "/" && !loggedInUser && <span>Guest</span>}
+        {loggedInUser && <Link className="font-bold">{loggedInUser}</Link>}
       </nav>
     </header>
   );

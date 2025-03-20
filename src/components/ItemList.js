@@ -1,8 +1,10 @@
 import React from "react";
 import { MENU_ITEM_URL } from "../utils/constants";
 
-const ItemList = ({ items }) => {
+const ItemList = ({ items, dummy }) => {
   console.log("Items", items);
+  console.log(dummy);
+
   return (
     <div>
       {items.map((item) => {
@@ -23,9 +25,8 @@ const ItemList = ({ items }) => {
                     {item.card.info.ratings.aggregatedRating.ratingCount})
                   </h4>
                 )}
-
                 <p className="text-sm mb-3.5 h-20 overflow-y-auto">
-                  {item.card.info.description}
+                  {item?.card?.info?.description?.slice(0, 100)}...
                 </p>
               </div>
               <div className="w-3/12 h-32 relative">

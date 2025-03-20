@@ -7,7 +7,9 @@ import { useState } from "react";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
-  const [showIndex, setShowIndex] = useState(0);
+  const [showIndex, setShowIndex] = useState(null);
+
+  const dummy = "I am a dummy data";
 
   const resInfo = useRestaurantMenu(resId);
 
@@ -51,10 +53,17 @@ const RestaurantMenu = () => {
           return (
             <RestaurantCategory
               key={category.card.card.title}
+              dummy={dummy}
               data={category.card.card}
-              showList={index === showIndex ? true : false}
+              // showList={index === showIndex ? true : false}
+              showList={index === showIndex} // Pass boolean directly
+              // setShowIndex={() => {
+              //   setShowIndex(index);
+              // }}
               setShowIndex={() => {
-                setShowIndex(index);
+                setShowIndex((prevIndex) =>
+                  prevIndex === index ? null : index
+                ); // Toggle index
               }}
             />
           );

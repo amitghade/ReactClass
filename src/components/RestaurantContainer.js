@@ -1,6 +1,6 @@
 import RestaurantCard, { withVegLabel } from "./RestaurantCard";
 import resArr from "../utils/mockData";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import useRestaurantContainer from "../utils/useRestaurantContainer";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import Shimmer from "./Shimmer";

@@ -1,8 +1,9 @@
 import React from "react";
 import ItemList from "./ItemList";
 
-const RestaurantCategory = ({ data, showList, setShowIndex }) => {
+const RestaurantCategory = ({ data, showList, setShowIndex, dummy }) => {
   console.log("Data", data);
+  console.log(dummy);
 
   const handleClick = () => {
     setShowIndex();
@@ -22,7 +23,7 @@ const RestaurantCategory = ({ data, showList, setShowIndex }) => {
           </div>
           {/* Accordian body */}
 
-          {showList && <ItemList items={data.itemCards} />}
+          {showList && <ItemList items={data.itemCards} dummy={dummy} />}
         </div>
       </div>
     </div>

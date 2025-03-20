@@ -1,5 +1,7 @@
 import { CDN_URL } from "../utils/constants";
 
+import { useContext } from "react";
+
 const RestaurantCard = (props) => {
   // console.log("Props received = ", props);
   const { resData } = props;

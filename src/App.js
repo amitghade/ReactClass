@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import HeadingComponent from "./components/HeadingComponent.js";
 import RestaurantContainer from "./components/RestaurantContainer";
@@ -7,6 +7,9 @@ import RestaurantMenu from "./components/RestaurantMenu.js";
 import Error from "./components/Error.js";
 import Contact from "./components/Contact.js";
 import Shimmer from "./components/Shimmer.js";
+import { UserProvider } from "./utils/UserContext.js";
+import LoginComponent from "./components/LoginComponent.js";
+
 // import Grocery from "./components/Grocery.js";
 
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router";
@@ -15,8 +18,10 @@ import Shimmer from "./components/Shimmer.js";
 const Application = () => {
   return (
     <div>
-      <HeadingComponent />
-      <Outlet />
+      <UserProvider>
+        <HeadingComponent />
+        <Outlet />
+      </UserProvider>
     </div>
   );
 };
@@ -36,6 +41,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/about",
         element: <About />,
+      },
+      {
+        path: "/login",
+        element: <LoginComponent />,
       },
       {
         path: "/contact",
