@@ -1,9 +1,17 @@
 import React from "react";
 import { MENU_ITEM_URL } from "../utils/constants";
+import { useDispatch } from "react-redux";
+import { addItems } from "../utils/cartSlice";
 
 const ItemList = ({ items, dummy }) => {
   console.log("Items", items);
   console.log(dummy);
+
+  const dispatch = useDispatch();
+
+  const handleAddItem = (item) => {
+    dispatch(addItems(item));
+  };
 
   return (
     <div>
@@ -35,7 +43,12 @@ const ItemList = ({ items, dummy }) => {
                   src={MENU_ITEM_URL + item.card.info.imageId}
                   alt={item.card.info.name}
                 />
-                <button className="bg-green-600 text-white p-1 rounded absolute bottom-3 left-10 w-20 font-bold">
+                <button
+                  onClick={() => {
+                    handleAddItem(item);
+                  }}
+                  className="bg-green-600 text-white p-1 rounded absolute bottom-3 left-10 w-20 font-bold"
+                >
                   ADD+
                 </button>
               </div>

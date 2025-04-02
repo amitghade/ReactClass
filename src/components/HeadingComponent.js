@@ -5,6 +5,7 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 import { useNavigate } from "react-router";
 
 import { UserContext } from "../utils/UserContext";
+import { useSelector } from "react-redux";
 
 const HeadingComponent = () => {
   // let btnLabel = "Login";
@@ -16,6 +17,11 @@ const HeadingComponent = () => {
 
   const navigate = useNavigate();
 
+  const cartItems = useSelector((store) => {
+    console.log("Store", store);
+    return store.cart.items;
+  });
+  console.log(cartItems);
   const { loggedInUser, setLoggedInUser } = useContext(UserContext);
 
   const handleLoginBtn = () => {
@@ -43,7 +49,7 @@ const HeadingComponent = () => {
         <Link to="/about">About</Link>
         <Link to="/contact">Contact</Link>
         <Link to="/grocery">Grocery</Link>
-        <a href="#">Cart</a>
+        <Link to="/cart">Cart({cartItems.length} items)</Link>
         <button onClick={handleLoginBtn}>
           {loggedInUser ? "Logout" : "Login"}
         </button>
