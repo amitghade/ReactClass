@@ -3,7 +3,7 @@ import { CDN_URL } from "../utils/constants";
 import { useContext } from "react";
 
 const RestaurantCard = (props) => {
-  // console.log("Props received = ", props);
+  console.log("Props received Restaurant Card = ", props);
   const { resData } = props;
 
   const { name, cuisines, avgRating, costForTwo, cloudinaryImageId } =
