@@ -3,7 +3,11 @@ import { useSelector } from "react-redux";
 import { MENU_ITEM_URL } from "../utils/constants";
 import { useDispatch } from "react-redux";
 import { clearItems } from "../utils/cartSlice";
-import { increaseQuantity } from "../utils/cartSlice";
+import {
+  increaseQuantity,
+  decreseQuantity,
+  removeItems,
+} from "../utils/cartSlice";
 
 const Cart = () => {
   const cartItems = useSelector((store) => {
@@ -20,6 +24,14 @@ const Cart = () => {
 
   const handleIncreaseQuantity = (id) => {
     dispatch(increaseQuantity(id));
+  };
+
+  const handleDecreaseQuantity = (id) => {
+    dispatch(decreseQuantity(id));
+  };
+
+  const handleRemoveItem = (id) => {
+    dispatch(removeItems(id));
   };
 
   const handleClearItem = () => {
@@ -57,13 +69,24 @@ const Cart = () => {
             >
               <div>
                 <h3 className="font-semibold">
-                  {name} x {item.quantity}
+                  {name} x {item.quantity}{" "}
+                  <span
+                    onClick={() => {
+                      handleRemoveItem(id);
+                    }}
+                    className="cursor-pointer"
+                  >
+                    🗑️
+                  </span>
                 </h3>
                 <p className="text-sm mb-2.5">
                   ₹{price / 100 || defaultPrice / 100}
                 </p>
                 <p>
                   <span
+                    onClick={() => {
+                      handleDecreaseQuantity(id);
+                    }}
                     className="pl-1 pr-1 w-1 h-1 border border-solid text-center align-middle mr-2 cursor-pointer
                   "
                   >

@@ -1,4 +1,5 @@
-import logo from "../images/swiggy.svg";
+// import logo from "../images/swiggy.svg";
+import SvgComponent from "../images/SvgComponent";
 import { useEffect, useState, useContext } from "react";
 import { Link, useLocation } from "react-router";
 import useOnlineStatus from "../utils/useOnlineStatus";
@@ -39,7 +40,7 @@ const HeadingComponent = () => {
     <header className="header">
       {/* Logo */}
       <div className="logo">
-        <img src={logo} alt="Swiggy Logo" />
+        <SvgComponent />
       </div>
 
       {/* Navigation Links */}
