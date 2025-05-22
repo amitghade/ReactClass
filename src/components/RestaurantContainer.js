@@ -59,6 +59,7 @@ const RestaurantContainer = () => {
         {/* Search Bar */}
         <div className="search-container">
           <input
+            data-testid="searchInput"
             type="text"
             placeholder="Search..."
             className="search-input"

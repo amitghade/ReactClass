@@ -194,6 +194,9 @@ const config = {
   // Whether to use watchman for file crawling
   // watchman: true,
   setupFiles: ["<rootDir>/jest.setup.js"],
+  moduleNameMapper: {
+    "\\.(css|less|scss|sass)$": "<rootDir>/__mocks__/styleMock.js",
+  },
 };
 
 module.exports = config;
